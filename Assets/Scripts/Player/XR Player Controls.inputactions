@@ -1,0 +1,74 @@
+{
+    "name": "XR Player Controls",
+    "maps": [
+        {
+            "name": "Controller",
+            "id": "8e27b307-0b14-47f2-a4d0-77032199e741",
+            "actions": [
+                {
+                    "name": "Pressed X",
+                    "type": "Button",
+                    "id": "6d136c7f-32a7-4f55-b742-349070679530",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Pressed Y",
+                    "type": "Button",
+                    "id": "0dd146ae-6334-423b-8697-a67a81f9886e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Joystick Moved",
+                    "type": "Value",
+                    "id": "e0bf1b28-4cf5-4642-a701-8da7550339ed",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "b18929be-6f01-4ade-94c9-60e37b2dc187",
+                    "path": "<XRController>{LeftHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pressed X",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4d8e2087-e874-40af-9795-bb6dbe16cdc4",
+                    "path": "<XRController>{LeftHand}/secondaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pressed Y",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "11831bac-0453-4279-b9cd-509ec06c134a",
+                    "path": "<XRController>{LeftHand}/joystick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Joystick Moved",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

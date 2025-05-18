@@ -14,6 +14,9 @@ public class PlayerInputs : MonoBehaviour
     private bool stickUpLastFrame = false;
     private float upThreshold = 0.7f;
 
+    public static event System.Action OnXPressed;
+    public static event System.Action OnYPressed;
+
     void OnEnable()
     {
         var map = inputActions.FindActionMap("Controller", true);
@@ -55,11 +58,13 @@ public class PlayerInputs : MonoBehaviour
     {
         float value = ctx.ReadValue<float>();
         Debug.Log("Trigger pressed with value: " + value);
+        OnXPressed?.Invoke();
     }
 
     private void OnButtonYPressed(InputAction.CallbackContext ctx)
     {
         float value = ctx.ReadValue<float>();
         Debug.Log("Trigger pressed with value: " + value);
+        OnYPressed?.Invoke();
     }
 }

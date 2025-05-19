@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Lever
+  - Module
   layers:
   - Default
   - TransparentFX

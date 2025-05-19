@@ -6,9 +6,11 @@ using UnityEngine.UI;
 public class SelectBlock : MonoBehaviour
 {
     [SerializeField] private Sprite[] commands;
-    [SerializeField] private RandomizedBlocks[] blocks;
+    public RandomizedBlocks[] blocks;
     [SerializeField] private string[] commandStrings;
-    [SerializeField] private int maxBlocks;
+    public int maxBlocks = 3;
+    public int SpawnWaitTime  = 3;
+    public int holdWaitTime = 3;
     private int cBlocks = 0;
     // Start is called before the first frame update
     void Start()
@@ -33,8 +35,8 @@ public class SelectBlock : MonoBehaviour
         int b;
         r = Random.Range(0, commands.Length);
         b = Random.Range(0, blocks.Length);
-        blocks[b].SetUpBlock(commands[r], commandStrings[r]);
-        yield return new WaitForSeconds(3);
+        blocks[b].SetUpBlock(commands[r], commandStrings[r], holdWaitTime);
+        yield return new WaitForSeconds(SpawnWaitTime);
         cBlocks -= 1;
     }
 }

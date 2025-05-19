@@ -27,11 +27,11 @@ public class LeverScript : MonoBehaviour
         {
             if(directionSet)
             {
-                LeverUp.Invoke();
+                LeverUp?.Invoke();
             }
             else
             {
-                LeverDown.Invoke();
+                LeverDown?.Invoke();
             }
         }
     }

@@ -28,29 +28,29 @@ public class RandomizedBlocks : MonoBehaviour
         }
     }
 
-    public void SetUpBlock(Sprite cSprite, string command)
+    public void SetUpBlock(Sprite cSprite, string command, int waittime)
     {
         if (!active)
         {
             blockImg.enabled = true;
             blockImg.sprite = cSprite;
             cCommand = command;
-            StartCoroutine(this.CountDown());
+            StartCoroutine(this.CountDown(waittime));
             active = true;
         }
     }
-    private IEnumerator CountDown()
+    private IEnumerator CountDown(int waittime)
     {
         blockRenderer.material.color = Color.green;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(waittime);
         blockRenderer.material.color = Color.yellow;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(waittime);
         blockRenderer.material.color = Color.red;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(waittime);
         fail = true;
     }
 
-    private void ResetBlock()
+    public void ResetBlock()
     {
         StopAllCoroutines();
         active = false;
@@ -117,6 +117,17 @@ public class RandomizedBlocks : MonoBehaviour
         if (cCommand == "LeverDown")
         {
             Debug.Log($"{gameObject.name} received correct Lever input!");
+            ResetBlock();
+        }
+    }
+
+    public void HandleHandDown()
+    {
+        if (!active) return;
+
+        if(cCommand == "HandDown")
+        {
+            Debug.Log($"{gameObject.name} received correct Hand input!");
             ResetBlock();
         }
     }

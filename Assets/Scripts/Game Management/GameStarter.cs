@@ -9,6 +9,7 @@ public class GameStarter : MonoBehaviour
     [SerializeField] private GameObject StartUI;
     [SerializeField] private GameObject ResetUI;
     [SerializeField] private GameObject MenuUI;
+    [SerializeField] private GameObject ScoreUI;
     [SerializeField] private InteractableUnityEventWrapper buttonController;
     [SerializeField] private LeverScript[] leverControllers;
     // Start is called before the first frame update
@@ -28,6 +29,7 @@ public class GameStarter : MonoBehaviour
         StartUI.SetActive(true);
         ResetUI.SetActive(false);
         MenuUI.SetActive(false);
+        ScoreUI.SetActive(false);
         foreach (LeverScript leverController in leverControllers)
         {
             leverController.enabled = true;
@@ -43,6 +45,8 @@ public class GameStarter : MonoBehaviour
     public void SelectEasy()
     {
         StartUI.SetActive(false);
+        GameTracker.cScore = 0;
+        GameTracker.cDifficulty = "Easy";
         spawner.enabled = true;
         spawner.maxBlocks = 3;
         spawner.SpawnWaitTime = 3;
@@ -52,6 +56,8 @@ public class GameStarter : MonoBehaviour
     public void SelectMedium()
     {
         StartUI.SetActive(false);
+        GameTracker.cScore = 0;
+        GameTracker.cDifficulty = "Medium";
         spawner.enabled = true;
         spawner.maxBlocks = 5;
         spawner.SpawnWaitTime = 2;
@@ -61,6 +67,8 @@ public class GameStarter : MonoBehaviour
     public void SelectHard()
     {
         StartUI.SetActive(false);
+        GameTracker.cScore = 0;
+        GameTracker.cDifficulty = "Hard";
         spawner.enabled = true;
         spawner.maxBlocks = 8;
         spawner.SpawnWaitTime = 2;
@@ -70,6 +78,8 @@ public class GameStarter : MonoBehaviour
     public void SelectImpossible()
     {
         StartUI.SetActive(false);
+        GameTracker.cScore = 0;
+        GameTracker.cDifficulty = "Impossible";
         spawner.enabled = true;
         spawner.maxBlocks = 8;
         spawner.SpawnWaitTime = 1;

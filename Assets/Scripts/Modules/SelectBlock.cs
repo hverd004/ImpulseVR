@@ -8,6 +8,7 @@ public class SelectBlock : MonoBehaviour
     [SerializeField] private Sprite[] commands;
     public RandomizedBlocks[] blocks;
     [SerializeField] private string[] commandStrings;
+    [SerializeField] private AudioClip blockSpawnSound;
     public int maxBlocks = 3;
     public int SpawnWaitTime  = 3;
     public int holdWaitTime = 3;
@@ -36,6 +37,8 @@ public class SelectBlock : MonoBehaviour
         r = Random.Range(0, commands.Length);
         b = Random.Range(0, blocks.Length);
         blocks[b].SetUpBlock(commands[r], commandStrings[r], holdWaitTime);
+        blocks[b].gameObject.GetComponent<AudioSource>().clip = blockSpawnSound;
+        blocks[b].gameObject.GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(SpawnWaitTime);
         cBlocks -= 1;
     }

@@ -12,10 +12,13 @@ public class PlayerInputs : MonoBehaviour
 
     private InputAction thumbstickAction;
     private bool stickUpLastFrame = false;
+    private bool stickDownLastFrame = false;
     private float upThreshold = 0.7f;
 
     public static event System.Action OnXPressed;
     public static event System.Action OnYPressed;
+    public static event System.Action OnJoystickUp;
+    public static event System.Action OnJoystickDown;
 
     void OnEnable()
     {
@@ -43,15 +46,27 @@ public class PlayerInputs : MonoBehaviour
     void Update()
     {
         Vector2 stick = thumbstickAction.ReadValue<Vector2>();
+        //stick up
         bool stickUp = stick.y > upThreshold;
 
         if (stickUp && !stickUpLastFrame)
         {
             Debug.Log("Thumbstick moved UP!");
-            // Fire your one-shot action here
+            OnJoystickUp?.Invoke();
         }
 
         stickUpLastFrame = stickUp;
+
+        //stick down
+        bool stickDown = stick.y < (-upThreshold);
+        if (stickDown && !stickDownLastFrame)
+        {
+            Debug.Log("Thumbstick moved !");
+            Debug.Log("Thumbstick moved own!");
+            OnJoystickDown?.Invoke();
+        }
+
+        stickUpLastFrame = stickDown;
     }
 
     private void OnButtonXPressed(InputAction.CallbackContext ctx)

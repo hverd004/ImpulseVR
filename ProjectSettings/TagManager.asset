@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Lever
   - Module
+  - Crank
   layers:
   - Default
   - TransparentFX

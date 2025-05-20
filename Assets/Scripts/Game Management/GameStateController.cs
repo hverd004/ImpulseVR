@@ -41,6 +41,7 @@ public class GameStateController : MonoBehaviour
             {
                 block.enabled = false;
             }
+            GameTracker.SaveState();
         }
     }
 
@@ -59,5 +60,6 @@ public class GameStateController : MonoBehaviour
         buttonController.enabled = true;
         ResetUi.SetActive(false);
         MenuUi.SetActive(false);
+        GameTracker.cScore = 0;
     }
 }

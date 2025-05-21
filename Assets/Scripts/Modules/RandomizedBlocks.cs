@@ -75,6 +75,8 @@ public class RandomizedBlocks : MonoBehaviour
         WheelScript.OnRed += HandleOnRed;
         WheelScript.OnYellow += HandleOnYellow;
         WheelScript.OnBlue += HandleOnBlue;
+        PlayerInputs.OnTriggerPressed += HandleTriggerPressed;
+        PlayerInputs.OnGrabPressed += HandleGrabPressed;
     }
 
     private void OnDisable()
@@ -89,6 +91,8 @@ public class RandomizedBlocks : MonoBehaviour
         WheelScript.OnRed -= HandleOnRed;
         WheelScript.OnYellow -= HandleOnYellow;
         WheelScript.OnBlue -= HandleOnBlue;
+        PlayerInputs.OnTriggerPressed -= HandleTriggerPressed;
+        PlayerInputs.OnGrabPressed -= HandleGrabPressed;
     }
 
     private void HandleXPressed()
@@ -235,6 +239,34 @@ public class RandomizedBlocks : MonoBehaviour
         if (cCommand == "OnRed")
         {
             Debug.Log($"{gameObject.name} received correct Color Red input!");
+            GameTracker.cScore += 1;
+            GetComponent<AudioSource>().clip = correctActionAudio;
+            GetComponent<AudioSource>().Play();
+            ResetBlock();
+        }
+    }
+
+    public void HandleTriggerPressed()
+    {
+        if (!active) return;
+
+        if (cCommand == "PressTrigger")
+        {
+            Debug.Log($"{gameObject.name} received correct Trigger input!");
+            GameTracker.cScore += 1;
+            GetComponent<AudioSource>().clip = correctActionAudio;
+            GetComponent<AudioSource>().Play();
+            ResetBlock();
+        }
+    }
+
+    public void HandleGrabPressed()
+    {
+        if (!active) return;
+
+        if (cCommand == "PressGrab")
+        {
+            Debug.Log($"{gameObject.name} received correct Grab input!");
             GameTracker.cScore += 1;
             GetComponent<AudioSource>().clip = correctActionAudio;
             GetComponent<AudioSource>().Play();

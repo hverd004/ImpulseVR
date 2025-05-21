@@ -69812,6 +69812,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: bc6e3e87fd13b2944bfd6b765f39611f, type: 3}
   - {fileID: 21300000, guid: 77f5764b77ec1f0409ad3a121b61d7a3, type: 3}
   - {fileID: 21300000, guid: 0152f5152b4e14f4eb5937434df37e47, type: 3}
+  - {fileID: 1053706052, guid: 069a00c4a21d8654bbe27600f3ba7103, type: 3}
+  - {fileID: -341555778, guid: 069a00c4a21d8654bbe27600f3ba7103, type: 3}
   blocks:
   - {fileID: 361242574}
   - {fileID: 702874250}
@@ -69833,6 +69835,8 @@ MonoBehaviour:
   - OnYellow
   - OnBlue
   - OnRed
+  - PressTrigger
+  - PressGrab
   blockSpawnSound: {fileID: 8300000, guid: 8f64836b1c4f3864ab4f224e8d3c536c, type: 3}
   maxBlocks: 3
   SpawnWaitTime: 3
@@ -73946,7 +73950,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!54 &2064034884
 Rigidbody:
   m_ObjectHideFlags: 0

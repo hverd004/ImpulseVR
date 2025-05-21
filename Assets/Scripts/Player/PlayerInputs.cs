@@ -9,7 +9,8 @@ public class PlayerInputs : MonoBehaviour
 
     private InputAction xButtonAction;
     private InputAction yButtonAction;
-
+    private InputAction triggerButtonAction;
+    private InputAction grabButtonAction;
     private InputAction thumbstickAction;
     private bool stickUpLastFrame = false;
     private bool stickDownLastFrame = false;
@@ -19,6 +20,8 @@ public class PlayerInputs : MonoBehaviour
     public static event System.Action OnYPressed;
     public static event System.Action OnJoystickUp;
     public static event System.Action OnJoystickDown;
+    public static event System.Action OnTriggerPressed;
+    public static event System.Action OnGrabPressed;
 
     void OnEnable()
     {
@@ -28,10 +31,16 @@ public class PlayerInputs : MonoBehaviour
         yButtonAction = map.FindAction("Pressed Y", true);
         yButtonAction.performed += OnButtonYPressed;
         thumbstickAction = map.FindAction("Joystick Moved", true);
+        triggerButtonAction = map.FindAction("Pressed Trigger", true);
+        triggerButtonAction.performed += OnTriggerAction;
+        grabButtonAction = map.FindAction("Pressed Grab", true);
+        grabButtonAction.performed += OnGrabAction;
 
         xButtonAction.Enable();
         yButtonAction.Enable();
         thumbstickAction.Enable();
+        triggerButtonAction.Enable();
+        grabButtonAction.Enable();
     }
 
     void OnDisable()
@@ -41,6 +50,10 @@ public class PlayerInputs : MonoBehaviour
         yButtonAction.performed -= OnButtonYPressed;
         yButtonAction?.Disable();
         thumbstickAction?.Disable();
+        triggerButtonAction.performed -= OnTriggerAction;
+        triggerButtonAction?.Disable();
+        grabButtonAction.performed -= OnGrabAction;
+        grabButtonAction?.Disable();
     }
 
     void Update()
@@ -81,5 +94,19 @@ public class PlayerInputs : MonoBehaviour
         float value = ctx.ReadValue<float>();
         Debug.Log("Trigger pressed with value: " + value);
         OnYPressed?.Invoke();
+    }
+
+    private void OnTriggerAction(InputAction.CallbackContext ctx)
+    {
+        float value = ctx.ReadValue<float>();
+        Debug.Log("Trigger pressed with value: " + value);
+        OnTriggerPressed?.Invoke();
+    }
+
+    private void OnGrabAction(InputAction.CallbackContext ctx)
+    {
+        float value = ctx.ReadValue<float>();
+        Debug.Log("Trigger pressed with value: " + value);
+        OnGrabPressed?.Invoke();
     }
 }

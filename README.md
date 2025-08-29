@@ -1,1 +1,1 @@
-<iframe width="560" height="315" src="https://youtu.be/HXFC5vjZtfo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![Watch the video](https://img.youtube.com/vi/HXFC5vjZtfo/hqdefault.jpg)](https://www.youtube.com/embed/HXFC5vjZtfo)
